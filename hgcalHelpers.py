@@ -1,5 +1,6 @@
 import numpy as np
-from HGCalImagingAlgo import recHitAboveThreshold
+#from HGCalImagingAlgo import recHitAboveThreshold
+import HGCalImagingAlgo
 import math
 from scipy.spatial import cKDTree
 

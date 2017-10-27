@@ -239,6 +239,7 @@ def main():
     parser.add_option('', '--tag', dest='tag', type='string',  default='noPU', help='some tag, best used for PU and other info')
     parser.add_option('', '--ref', dest='refName', type='string',  default='genpart', help='reference collection')
     parser.add_option('', '--obj', dest='objName', type='string',  default='pfcluster', help='object of interest collection')
+    parser.add_option('', '--outfile', dest='outFile', type='string',  default='test.root', help='output file name')
 
     # store options and arguments as global variables
     global opt, args
@@ -268,7 +269,7 @@ def main():
         ntuple = HGCalNtuple(opt.fileString)
         eventLoop(ntuple, refName, objName, gun_type, pidSelected, GEN_engpt, histDict)
 
-    f = ROOT.TFile("{}_{}_{}GeV_{}_{}_{}.root".format(gun_type, pidSelected, GEN_engpt, refName, objName, tag), "recreate")
+    f = ROOT.TFile(opt.outFile, "recreate")
     for etaBinName in etaBins:
         for phiBinName in phiBins:
             if "ref_Energy_eta" + etaBinName + "_phi" + phiBinName in histDict[etaBinName][phiBinName]:
